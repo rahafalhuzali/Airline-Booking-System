@@ -15,7 +15,7 @@ To create a database that allows users and employees to manage reservations, che
 ### ER Diagram
 Below is the ER diagram for the airline booking system:
 
-![ER Diagram](images/er_diagram.png)
+![ER Diagram](ER_digram.png)
 
 ### Entities:
 - **Flight**
