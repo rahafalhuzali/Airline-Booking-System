@@ -26,7 +26,7 @@ The goal of this project is to create a database for an airline booking system t
 - `Ticket_ID → Flight_ID, Profile_ID`
 
 ### ER Diagram
-![ER Diagram](ER_diagram.png)
+![ER Diagram](ER_digram.png)
 
 ## Example Queries
 1. **List flights ordered by flight date:**
@@ -34,7 +34,7 @@ The goal of this project is to create a database for an airline booking system t
    SELECT FLIGHT_ID, FLIGHT_DATE 
    FROM FLIGHT 
    ORDER BY FLIGHT_DATE DESC;
-##Procedures
+## Procedures
 **Compare flight prices with a minimum price:**
 ```sql
 CREATE OR REPLACE PROCEDURE priceCheck (MinPrice NUMBER) AS 
