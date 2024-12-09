@@ -3,41 +3,47 @@
 This project is a relational database design and implementation for an airline booking system. It provides functionality for ticket reservations, flight information, and payment processing.
 
 ## Project Goal
-To create a database that allows users and employees to manage reservations, check flight prices, and inquire about flight details effectively.
+The goal of this project is to create a database for an airline booking system that allows users and employees to manage reservations, check flight prices, and inquire about flight details effectively.
 
 ## Features
-- Flight and airport management
-- Passenger profile and ticket handling
-- Payment processing with credit card details
-- Optimized SQL queries for reports and analysis
+- Manage flights, passengers, tickets, airports, and airlines.
+- Process payments using stored credit card details.
+- Perform advanced SQL queries like filtering and categorization.
+- Create and execute stored procedures.
 
 ## Database Design
-### ER Diagram
-Below is the ER diagram for the airline booking system:
-
-![ER Diagram](ER_digram.png)
-
 ### Entities:
-- **Flight**
-- **Passenger Profile**
-- **Ticket Info**
-- **Credit Card Details**
-- **Airport**
-- **Airline**
+- **FLIGHT**: Contains flight details (e.g., departure time, price, and date).
+- **PASSENGER_PROFILE**: Stores passenger information (e.g., name, phone number).
+- **TICKET_INFO**: Maps passengers to flights using tickets.
+- **AIRLINE**: Stores airline information.
+- **AIRPORT**: Contains airport data (e.g., address).
+- **CREDIT_CARD_DETAILS**: Includes passenger payment information.
 
-### Functional Dependencies
+### Functional Dependencies:
 - `Flight_ID → Departure_time, Arrival_time, Total_seats, Price, Flight_date`
 - `Profile_ID → First_name, Last_name, Phone_number, Email_ID`
-- And more...
+- `Ticket_ID → Flight_ID, Profile_ID`
 
-## Queries
-Example queries included:
-1. List flights ordered by date.
-2. Display the number of credit cards per type.
-3. Categorize flights by ticket price.
-4. Find the flight with the highest price.
+### ER Diagram
+![ER Diagram](ER_diagram.png)
 
-## How to Use
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/Airline-Booking-System.git
+## Example Queries
+1. **List flights ordered by flight date:**
+   ```sql
+   SELECT FLIGHT_ID, FLIGHT_DATE 
+   FROM FLIGHT 
+   ORDER BY FLIGHT_DATE DESC;
+##Procedures
+**Compare flight prices with a minimum price:**
+```sql
+CREATE OR REPLACE PROCEDURE priceCheck (MinPrice NUMBER) AS 
+    CURSOR executive IS 
+        SELECT Flight_ID, price 
+        FROM FLIGHT 
+        WHERE price > MinPrice;
+BEGIN
+    FOR v_cursrec IN executive LOOP 
+        DBMS_OUTPUT.PUT_LINE(v_cursrec.Flight_ID || ' ' || v_cursrec.price);
+    END LOOP;
+END priceCheck;
