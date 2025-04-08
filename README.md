@@ -1,4 +1,4 @@
-# Airline Booking System
+# Airline Booking System-SQL
 
 This project is a relational database design and implementation for an airline booking system. It provides functionality for ticket reservations, flight information, and payment processing.
 
